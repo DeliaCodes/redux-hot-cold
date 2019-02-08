@@ -1,4 +1,5 @@
 import gameReducer from './reducer';
+import * as Actions from './actions';
 
 describe('First Reducer tests', () => {
     const initialState = {
@@ -10,7 +11,9 @@ describe('First Reducer tests', () => {
         guesses: [5, 6, 8]
     }
     it('Restart Game sets to initial state', () => {
-        const state = gameReducer(middleGameState, { type: 'RESET_GAME' })
+        const action = Actions.RESTART_GAME;
+        const state = gameReducer(middleGameState, { type: 'RESTART_GAME' })
+        delete state.correctAnswer;
         expect(state).toEqual(initialState);
 
     })
